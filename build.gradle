@@ -90,6 +90,39 @@ processResources {
     }
 }
 
+def bintrayApi = privateConfig ? priv.bintray_api : System.getenv("PROJECT_BINTRAY_API")
+def bintrayUser = privateConfig ? priv.bintray_user : System.getenv("PROJECT_BINTRAY_USER")
+
+if (bintrayApi != null) {
+    bintray {
+        user = bintrayUser
+        key = bintrayApi
+        publications = ["OreCraft"]
+
+        pkg {
+            repo = "MinecraftMods"
+            name = "OreCraft"
+            licenses = ["MIT"]
+            issueTrackerUrl = 'https://github.com/PaperKarmaBabies/OreCraft/issues'
+            vcsUrl = "https://github.com/PaperKarmaBabies/OreCraft.git"
+            publicDownloadNumbers = true
+            githubRepo = "PaperKarmaBabies/OreCraft"
+            publish = true
+
+            version {
+                name = project.version
+                released = new Date()
+                attributes = ["MC Version"        : config.mc_version,
+                              "Min. Forge Version": forgeVersion]
+
+                if (isRelease()) {
+                    vcsTag = project.gitTag
+                }
+            }
+        }
+    }
+}
+
 publishing {
     publications {
         OreCraft(MavenPublication) {
@@ -145,8 +178,16 @@ if (cfApi != null) {
     }
 
     afterEvaluate {
-        curseforge.curseProjects.each { tasks["curseforge${it.id}"].dependsOn reobfJar }
+        curseforge.curseProjects.each { tasks["curseforge${it.id}"].dependsOn bintrayUpload }
     }
+}
+
+task release() {
+    if (isRelease()) {
+        println "Triggering release build"
+        dependsOn "curseforge"
+    } else
+        dependsOn bintrayUpload
 }
 
 task generateChangelogs() {
@@ -183,3 +224,5 @@ ${lists.join("\n")}
 ${changelogFile.text.readLines().drop(2).join("\n")}"""
     }
 }
+
+tasks.build.dependsOn(release)

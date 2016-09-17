@@ -1,3 +1,6 @@
+OreCraft [![Build Status](https://travis-ci.org/PaperKarmaBabies/OreCraft.svg?branch=master)](https://travis-ci.org/PaperKarmaBabies/OreCraft)
+========
+
 ### Development Setup and Building
 This mod follows the standard structure for Minecraft Mods. If you want to work with the code yourself and even build it, follow this guide. Please be aware that basic understanding of programming terms and Java/Kotlin is expected.
 To get a development environment running, follow these simple steps:
@@ -18,7 +21,8 @@ Building the mod is just as easy, simply run `gradlew build` on the command line
 |`cf_api`|A CurseForge API token, used for automatically uploading artifacts to the site. If you want to use the `curseforge` Gradle task, you should get yourself an API token. Information on how to acquire one can be found [here](https://github.com/curseforge/api#generate-a-token).|
 |`cf_project`|The ID of a project on CurseForge. This will be used as target by the `curseforge` Gradle task.|
 |`cf_type`|The release type to be used for the upload on CurseForge.<br>May be one of the following three: `release`, `beta` or `alpha`|
-
+|`bintray_type`|A BinTray API token, used for automatically uploading artifacts to the site. If you want to use the `bintrayUpload` Gradle task, you should get yourself an API token. Information on how to acquire one can be found [here](https://bintray.com/docs/usermanual/interacting/interacting_editingyouruserprofile.html#anchorAPIKEY).|
+|`bintray_user`|The BinTray user the API token belongs to. If you want to use the `bintrayUpload` Gradle task, you should set this property.|
 
 ### Contributing
 #### Through Code
