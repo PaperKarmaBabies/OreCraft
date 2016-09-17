@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "orecraft",
+    "name": "OreCraft",
+    "description": "Everything ores!",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "updateUrl": "${updateUrl}",
+    "authorList": [
+      "PaleoCrafter", "Ivorius", "Ordinastie"
+    ],
+    "logoFile": "assets/orecraft/logo.png",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
