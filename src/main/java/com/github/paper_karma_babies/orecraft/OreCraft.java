@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
     name = OreCraft.MOD_NAME,
     version = OreCraft.VERSION,
     acceptedMinecraftVersions = "*",
-    dependencies = "required-after:Forge",
+    dependencies = "required-after:Forge;required-after:reccomplex",
     updateJSON = "@UPDATE_URL@")
 public class OreCraft
 {
