@@ -72,6 +72,10 @@ compileJava {
 import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
 
+dependencies {
+    deobfCompile 'ivorius.reccomplex:RecurrentComplex:1.1.1'
+}
+
 processResources {
     // this will ensure that this task is redone when the versions change.
     inputs.property 'version', config.mod_version
